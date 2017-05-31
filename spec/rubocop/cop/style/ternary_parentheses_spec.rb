@@ -145,6 +145,12 @@ describe RuboCop::Cop::Style::TernaryParentheses, :config do
                       'foo = yield ? a : b'
 
       it_behaves_like 'code with offense',
+                      'foo = (yield true) ? a : b'
+
+      it_behaves_like 'code with offense',
+                      'foo = (foo true) ? a : b'
+
+      it_behaves_like 'code with offense',
                       'foo = (bar[:baz]) ? a : b',
                       'foo = bar[:baz] ? a : b'
     end
